@@ -19,10 +19,10 @@ build:
 
 requirements:
   host:
-    - python
+    - python >=3.6.1
     - setuptools
   run:
-    - python
+    - python >=3.6.1
     - jupyter_client >=5.2.0
     - jupyter_core >=4.4.0
     - notebook >=5.7.6,<7.0
