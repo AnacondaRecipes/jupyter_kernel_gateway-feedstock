@@ -22,7 +22,7 @@ requirements:
     - setuptools
     - wheel
   run:
-    - python >=3.6.1
+    - python
     - jupyter_client >=5.2.0
     - jupyter_core >=4.4.0
     - notebook >=5.7.6,<7.0
@@ -45,12 +45,15 @@ test:
   commands:
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
+    - pip check
 
 about:
-  home: http://github.com/jupyter/kernel_gateway
-  license: BSD 3-Clause
+  home: https://github.com/jupyter/kernel_gateway
+  license: BSD-3-Clause
   license_file: LICENSE.md
   summary: Jupyter Kernel Gateway
+  description: |
+    Jupyter Kernel Gateway is a web server that provides headless access to Jupyter kernels.
   doc_url: https://jupyter-kernel-gateway.readthedocs.io
   dev_url: https://github.com/jupyter/kernel_gateway
 
