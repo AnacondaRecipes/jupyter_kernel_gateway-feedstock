@@ -56,6 +56,7 @@ about:
   description: |
     Jupyter Kernel Gateway is a web server that provides headless access to Jupyter kernels.
   doc_url: https://jupyter-kernel-gateway.readthedocs.io
+  doc_source_url: https://github.com/jupyter-server/kernel_gateway/blob/master/docs/source/index.rst
   dev_url: https://github.com/jupyter/kernel_gateway
 
 extra:
