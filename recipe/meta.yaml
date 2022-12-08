@@ -50,6 +50,8 @@ about:
   home: https://github.com/jupyter/kernel_gateway
   license: BSD-3-Clause
   license_file: LICENSE.md
+  license_family: BSD
+  license_url: https://opensource.org/licenses/BSD-3-Clause
   summary: Jupyter Kernel Gateway
   description: |
     Jupyter Kernel Gateway is a web server that provides headless access to Jupyter kernels.
