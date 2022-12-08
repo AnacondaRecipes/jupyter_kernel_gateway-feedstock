@@ -45,7 +45,6 @@ test:
   commands:
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
-    - pip check
 
 about:
   home: https://github.com/jupyter/kernel_gateway
