@@ -46,11 +46,6 @@ test:
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
 
-extra:
-  skip-lints:
-    - missing_license_url
-    - missing_doc_source_url
-    
 about:
   home: https://github.com/jupyter/kernel_gateway
   license: BSD-3-Clause
@@ -69,3 +64,6 @@ extra:
     - parente
     - lresende
     - kevin-bates
+  skip-lints:
+    - missing_license_url
+    - missing_doc_source_url
