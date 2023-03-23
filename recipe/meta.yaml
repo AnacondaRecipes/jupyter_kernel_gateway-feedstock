@@ -1,18 +1,18 @@
-{% set version = "2.5.1" %}
-{% set sha256 = "1d40df18e1c5a346faf44716573dfd531343936bf479cb05e9391dbe28b90779" %}
+{% set name = "jupyter_kernel_gateway" %}
+{% set version = "2.5.2" %}
 
 package:
-  name: jupyter_kernel_gateway
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  fn: jupyter-kernel-gateway-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/j/jupyter_kernel_gateway/jupyter_kernel_gateway-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: "3d93f05a06e7fb2112255ff45596cce48963b8eaf309efa2e79a6ad0d96a7f06"
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  skip: true  # [py<37]
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   entry_points:
     - jupyter-kernelgateway = kernel_gateway:launch_instance
 
@@ -20,10 +20,11 @@ requirements:
   host:
     - python
     - setuptools
+    - pip
     - wheel
   run:
     - python
-    - jupyter_client >=5.2.0
+    - jupyter_client >=5.2.0,<8.0
     - jupyter_core >=4.4.0
     - notebook >=5.7.6,<7.0
     - traitlets >=4.2.0
@@ -31,6 +32,8 @@ requirements:
     - tornado >=4.2.0
 
 test:
+  requires:
+    - pip
   imports:
     - kernel_gateway
     - kernel_gateway.base
@@ -43,27 +46,24 @@ test:
     - kernel_gateway.services.kernelspecs
     - kernel_gateway.services.sessions
   commands:
+    - pip check
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
 
 about:
-  home: https://github.com/jupyter/kernel_gateway
+  home: https://github.com/jupyter-server/kernel_gateway
   license: BSD-3-Clause
   license_file: LICENSE.md
   license_family: BSD
-  license_url: https://opensource.org/licenses/BSD-3-Clause
   summary: Jupyter Kernel Gateway
   description: |
-    Jupyter Kernel Gateway is a web server that provides headless access to Jupyter kernels.
+    Jupyter Kernel Gateway is a web server that supports different mechanisms for spawning 
+    and communicating with Jupyter kernels. 
   doc_url: https://jupyter-kernel-gateway.readthedocs.io
-  doc_source_url: https://github.com/jupyter-server/kernel_gateway/blob/master/docs/source/index.rst
-  dev_url: https://github.com/jupyter/kernel_gateway
+  dev_url: https://github.com/jupyter-server/kernel_gateway
 
 extra:
   recipe-maintainers:
     - parente
     - lresende
     - kevin-bates
-  skip-lints:
-    - missing_license_url
-    - missing_doc_source_url
