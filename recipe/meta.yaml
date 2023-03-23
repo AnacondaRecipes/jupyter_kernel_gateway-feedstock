@@ -2,7 +2,7 @@
 {% set version = "2.5.2" %}
 
 package:
-  name: jupyter_kernel_gateway
+  name: {{ name }}
   version: {{ version }}
 
 source:
