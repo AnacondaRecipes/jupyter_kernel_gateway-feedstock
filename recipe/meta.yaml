@@ -11,7 +11,7 @@ source:
 
 build:
   number: 0
-  skip: true  # [py<38]
+  skip: true  # [py<38 or s390x] no nodejs on s390x
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
   entry_points:
     - jupyter-kernelgateway = kernel_gateway:launch_instance
