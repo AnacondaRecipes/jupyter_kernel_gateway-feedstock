@@ -1,5 +1,5 @@
 {% set name = "jupyter_kernel_gateway" %}
-{% set version = "2.5.2" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name }}
@@ -7,33 +7,39 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: "3d93f05a06e7fb2112255ff45596cce48963b8eaf309efa2e79a6ad0d96a7f06"
+  sha256: 900690c4c0e796867355468d685f7fa1cf3c7775d08e871c157f77d65fbd6d7f
 
 build:
   number: 0
-  skip: true  # [py<37]
-  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  skip: true  # [py<38]
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vv
   entry_points:
     - jupyter-kernelgateway = kernel_gateway:launch_instance
 
 requirements:
   host:
     - python
-    - setuptools
+    - hatchling >=1.5
     - pip
-    - wheel
   run:
     - python
-    - jupyter_client >=5.2.0,<8.0
-    - jupyter_core >=4.4.0
-    - notebook >=5.7.6,<7.0
-    - traitlets >=4.2.0
-    - requests >=2.7,<3.0
-    - tornado >=4.2.0
+    - jupyter_client >=8.6
+    - jupyter_core >=5.7
+    - jupyter_server >=2.12
+    - requests >=2.31
+    - tornado >=6.4
+    - traitlets >=5.14.1
 
 test:
+  source_files:
+    - pyproject.toml
+    - tests/
   requires:
     - pip
+    - pytest
+    - pytest-timeout
+    - pytest-jupyter
+    - ipykernel
   imports:
     - kernel_gateway
     - kernel_gateway.base
@@ -49,6 +55,7 @@ test:
     - pip check
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
+    - pytest -vv
 
 about:
   home: https://github.com/jupyter-server/kernel_gateway
