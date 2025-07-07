@@ -25,9 +25,10 @@ requirements:
     - python
     - jupyter_client >=8.6
     - jupyter_core >=5.7
-    - traitlets >=5.14.1
+    - jupyter_server >=2.12
     - requests >=2.31
     - tornado >=6.4
+    - traitlets >=5.14.1
     # nbformat is required at runtime but it's not mentioned in the requirements,
     # see https://github.com/jupyter-server/kernel_gateway/blob/v3.0.1/kernel_gateway/gatewayapp.py#L20
     - nbformat
@@ -50,6 +51,7 @@ test:
     - pip check
     - jupyter-kernelgateway --help
     - jupyter kernelgateway --help
+    - jupyter-kernelgateway --version
 
 about:
   home: https://github.com/jupyter-server/kernel_gateway
