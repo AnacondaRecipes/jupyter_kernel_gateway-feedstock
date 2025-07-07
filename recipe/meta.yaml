@@ -28,6 +28,9 @@ requirements:
     - traitlets >=5.14.1
     - requests >=2.31
     - tornado >=6.4
+    # nbformat is required at runtime but it's not mentioned in the requirements,
+    # see https://github.com/jupyter-server/kernel_gateway/blob/v3.0.1/kernel_gateway/gatewayapp.py#L20
+    - nbformat
 
 test:
   requires:
