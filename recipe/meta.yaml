@@ -1,13 +1,13 @@
 {% set name = "jupyter_kernel_gateway" %}
-{% set version = "2.5.2" %}
+{% set version = "3.0.1" %}
 
 package:
   name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: "3d93f05a06e7fb2112255ff45596cce48963b8eaf309efa2e79a6ad0d96a7f06"
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 900690c4c0e796867355468d685f7fa1cf3c7775d08e871c157f77d65fbd6d7f
 
 build:
   number: 0
@@ -57,8 +57,8 @@ about:
   license_family: BSD
   summary: Jupyter Kernel Gateway
   description: |
-    Jupyter Kernel Gateway is a web server that supports different mechanisms for spawning 
-    and communicating with Jupyter kernels. 
+    Jupyter Kernel Gateway is a web server that supports different mechanisms for spawning
+    and communicating with Jupyter kernels.
   doc_url: https://jupyter-kernel-gateway.readthedocs.io
   dev_url: https://github.com/jupyter-server/kernel_gateway
 
